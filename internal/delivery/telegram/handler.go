@@ -109,7 +109,7 @@ func (b *Bot) handleStartAuto(ctx context.Context, message *tgbotapi.Message) {
 		return
 	}
 
-	msg := fmt.Sprintf("🔔 Автоподписка включена. Частота обновлений (минуты): ", interval)
+	msg := fmt.Sprintf("🔔 Автоподписка включена. Частота обновлений (минуты): %d", interval)
 	b.sendMessage(message.Chat.ID, msg)
 
 }
