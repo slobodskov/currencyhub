@@ -13,7 +13,7 @@ import (
 )
 
 // handleStart processes /start command - welcomes user and shows available commands
-func (b *Bot) handleStart(ctx context.Context, message *tgbotapi.Message) {
+func (b *Bot) handleStart(message *tgbotapi.Message) {
 
 	msg := `🤖 💰 Добро пожаловать в Currency Hub Bot! 
 

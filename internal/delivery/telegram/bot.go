@@ -75,7 +75,7 @@ func (b *Bot) handleMessage(ctx context.Context, message *tgbotapi.Message) {
 
 	switch message.Command() {
 	case "start":
-		b.handleStart(ctx, message)
+		b.handleStart(message)
 	case "rates":
 		b.handleRates(ctx, message)
 	case "coins":
