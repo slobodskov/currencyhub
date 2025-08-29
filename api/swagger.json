@@ -1,0 +1,75 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "contact": {}
+    },
+    "paths": {
+        "/rates": {
+            "get": {
+                "description": "Возвращает список всех доступных курсов криптовалют",
+                "produces": [
+                    "text/plain"
+                ],
+                "tags": [
+                    "rates"
+                ],
+                "summary": "Получить все курсы валют",
+                "responses": {
+                    "200": {
+                        "description": "Курсы валют",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "Внутренняя ошибка сервера",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/rates/{currency}": {
+            "get": {
+                "description": "Возвращает детальную информацию по конкретной криптовалюте",
+                "produces": [
+                    "text/plain"
+                ],
+                "tags": [
+                    "rates"
+                ],
+                "summary": "Получить курс конкретной валюты",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Идентификатор валюты",
+                        "name": "currency",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Данные по валюте",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "404": {
+                        "description": "Валюта не найдена",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "Внутренняя ошибка сервера",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

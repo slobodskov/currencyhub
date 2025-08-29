@@ -1,0 +1,18 @@
+database:
+  host: "postgres"
+  port: 5432
+  user: "postgres"
+  dbname: "currencyhub"
+  sslmode: "disable"
+
+server:
+  port: ":8080"
+
+logging:
+  file: ""
+
+coingecko:
+    apikey: ""
+
+telegram:
+    token: ""

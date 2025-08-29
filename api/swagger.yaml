@@ -1,0 +1,48 @@
+info:
+  contact: {}
+paths:
+  /rates:
+    get:
+      description: Возвращает список всех доступных курсов криптовалют
+      produces:
+      - text/plain
+      responses:
+        "200":
+          description: Курсы валют
+          schema:
+            type: string
+        "500":
+          description: Внутренняя ошибка сервера
+          schema:
+            type: string
+      summary: Получить все курсы валют
+      tags:
+      - rates
+  /rates/{currency}:
+    get:
+      description: Возвращает детальную информацию по конкретной криптовалюте
+      parameters:
+      - description: Идентификатор валюты
+        in: path
+        name: currency
+        required: true
+        type: string
+      produces:
+      - text/plain
+      responses:
+        "200":
+          description: Данные по валюте
+          schema:
+            type: string
+        "404":
+          description: Валюта не найдена
+          schema:
+            type: string
+        "500":
+          description: Внутренняя ошибка сервера
+          schema:
+            type: string
+      summary: Получить курс конкретной валюты
+      tags:
+      - rates
+swagger: "2.0"
