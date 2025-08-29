@@ -105,7 +105,7 @@ func TestCurrencyUseCase_GetCurrencyRate(t *testing.T) {
 
 	mockRepo.On("GetLatestByCurrency", mock.Anything, "bitcoin").Return(expectedRate, nil)
 
-	rate, err := useCase.GetCurrencyRate(context.Background(), "bitcoin")
+	rate, err := useCase.GetLatestByCurrency(context.Background(), "bitcoin")
 
 	assert.NoError(t, err)
 	assert.Equal(t, expectedRate, rate)
@@ -118,7 +118,7 @@ func TestCurrencyUseCase_GetCurrencyRate_DBError(t *testing.T) {
 
 	mockRepo.On("GetLatestByCurrency", mock.Anything, "bitcoin").Return(nil, errors.New("database error"))
 
-	rate, err := useCase.GetCurrencyRate(context.Background(), "bitcoin")
+	rate, err := useCase.GetLatestByCurrency(context.Background(), "bitcoin")
 
 	assert.Error(t, err)
 	assert.Nil(t, rate)
