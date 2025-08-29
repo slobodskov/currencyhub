@@ -1,4 +1,4 @@
-// Package database provides database schema migration functionality
+// Package postgres provides database schema migration functionality
 // Handles database structure creation and updates
 package postgres
 

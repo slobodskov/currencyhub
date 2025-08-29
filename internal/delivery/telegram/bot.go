@@ -79,7 +79,7 @@ func (b *Bot) handleMessage(ctx context.Context, message *tgbotapi.Message) {
 	case "rates":
 		b.handleRates(ctx, message)
 	case "coins":
-		b.handleCoins(ctx, message)
+		b.handleCoins(message)
 	case "start_auto":
 		b.handleStartAuto(ctx, message)
 	case "stop_auto":

@@ -4,6 +4,7 @@ package telegram
 
 import (
 	"context"
+	"currencyhub/internal/entities"
 	"fmt"
 	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api/v5"
 	"strconv"
@@ -79,18 +80,9 @@ func (b *Bot) handleRates(ctx context.Context, message *tgbotapi.Message) {
 }
 
 // HandleCoins processes /coins command - shows available cryptocurrencies
-func (b *Bot) handleCoins(ctx context.Context, message *tgbotapi.Message) {
-	rates, err := b.currencyUseCase.GetRates(ctx)
-	if err != nil {
-		b.logger.Error("Failed to get rates", "error", err)
-		b.sendMessage(message.Chat.ID, "❌ Ошибка получения списка валют")
-		return
-	}
+func (b *Bot) handleCoins(message *tgbotapi.Message) {
 
-	var coins []string
-	for _, rate := range rates {
-		coins = append(coins, "🪙 "+rate.CurrencyID)
-	}
+	coins := entities.CurrencyList
 
 	msg := "📋 Доступные валюты:\n" + strings.Join(coins, "\n")
 	b.sendMessage(message.Chat.ID, msg)
