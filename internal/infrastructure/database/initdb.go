@@ -1,6 +1,6 @@
 // Package database provides PostgreSQL database connectivity
 // Handles database connection pooling and configuration
-package postgres
+package database
 
 import (
 	"fmt"

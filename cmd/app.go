@@ -9,11 +9,11 @@ import (
 	"currencyhub/internal/adapters/postgres"
 	"currencyhub/internal/delivery/server"
 	"currencyhub/internal/delivery/telegram"
+	"currencyhub/internal/infrastructure/database"
+	log "currencyhub/internal/infrastructure/logger"
+	"currencyhub/internal/infrastructure/shutdown"
 	"currencyhub/internal/repository"
-	"currencyhub/internal/shutdown"
 	"currencyhub/internal/usecases"
-	"currencyhub/pkg/database"
-	log "currencyhub/pkg/logger"
 	"fmt"
 	"github.com/jmoiron/sqlx"
 	"net/http"
@@ -39,7 +39,7 @@ func run() error {
 		err1 error
 	)
 	for i := 0; i < 5; i++ {
-		db, err1 = postgres.NewPostgresDB(dsn)
+		db, err1 = database.NewPostgresDB(dsn)
 		if err1 == nil {
 			break
 		}
