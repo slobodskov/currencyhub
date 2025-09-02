@@ -1,6 +1,6 @@
 // app contains main application initialization and orchestration logic
 // Coordinates between different application components and services
-package main
+package app
 
 import (
 	"context"
@@ -22,7 +22,7 @@ import (
 
 // Run starts all application services and components
 // Initializes use cases, starts scheduler, bot and HTTP server
-func run() error {
+func Run() error {
 
 	ctx := context.Background()
 	cfg, err := config.Load()
