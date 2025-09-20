@@ -3,6 +3,7 @@ package server
 import (
 	"currencyhub/internal/usecases"
 	"github.com/go-chi/chi/v5"
+	"github.com/prometheus/client_golang/prometheus/promhttp"
 	httpSwagger "github.com/swaggo/http-swagger"
 	"net/http"
 )
@@ -23,6 +24,11 @@ func NewCurrencyHandler(currencyUseCase *usecase.CurrencyUseCase) *CurrencyHandl
 // Returns configured router with all currency endpoints
 func (h *CurrencyHandler) Routes() http.Handler {
 	r := chi.NewRouter()
+
+	r.Use(prometheusMiddleware)
+
+	r.Handle("/metrics", promhttp.Handler())
+
 	r.Get("/rates", h.GetRates)
 	r.Get("/rates/{currency}", h.GetCurrencyRate)
 
